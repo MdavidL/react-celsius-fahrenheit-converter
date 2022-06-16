@@ -1,6 +1,7 @@
 const scaleNames = {
     c: 'Celsius',
-    f: 'Fahrenheit'
+    f: 'Fahrenheit',
+    d: '°'
 }
 
 function toCelsius (fahrenheit) {
@@ -15,9 +16,9 @@ function toFahrenheit (celsius) {
 
 function BoilingVerdict({celsius}) {
     if (celsius >=100) {
-        return <div className="alert alert-danger mt-5">L'eau bout !</div>
+        return <div className="alert alert-danger mt-5 text-center">L'eau bout !</div>
     }
-    return <div className="alert alert-success mt-5">L'eau ne bout pas</div>
+    return <div className="alert alert-success mt-5 text-center">L'eau ne bout pas.</div>
 }
 
 function tryConvert (temperature, convert) {
@@ -43,8 +44,8 @@ class TemperatureInput extends React.Component {
         const {temperature} = this.props
         const name = 'scale' + this.props.scale
         const scaleName = scaleNames[this.props.scale]
-        return <div className="form-group mt-4">
-                <label htmlFor={name}>Température (en {scaleName})</label>
+        return <div className="form-group mt-5">
+                <label htmlFor={name}>Température ({scaleName})</label>
                 <input type="text" id="name" value={temperature} className="form-control" onChange={this.handleChange}/>
             </div>
     }
